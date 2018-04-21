@@ -1,6 +1,6 @@
 from __future__ import print_function
 import numpy as np
-from .threes_backend import play_game
+from .threes_backend import play_game, to_score
 import sys
 sys.path.append('..')
 from Game import Game
@@ -43,7 +43,7 @@ class ThreesGame(Game):
         Returns:
             actionSize: number of all possible actions
         """
-        return len(self.valid_moves)
+        return 4
         
 
     def getNextState(self, board, player, action):
@@ -72,7 +72,7 @@ class ThreesGame(Game):
                         0 for invalid moves
         """
         moves = [1 if i in self.valid_moves else 0 for i in range(4)]
-        print(self.valid_moves, moves)
+        print("moves", moves)
         return moves
 
     def getGameEnded(self, board, player):
@@ -86,10 +86,9 @@ class ThreesGame(Game):
                small non-zero value for draw.
                
         """
-        if self.valid_moves:
-            return 0.0001
-        else:
-            return -1
+        if len(self.valid_moves) > 0:
+            return 0
+        return np.sum(to_score(self.board))
 
     def getCanonicalForm(self, board, player):
         """
@@ -105,6 +104,7 @@ class ThreesGame(Game):
                             board as is. When the player is black, we can invert
                             the colors and return the board.
         """
+        print(self.board, [self.next_tile])
         return np.append(self.board.flatten(), [self.next_tile])
 
     def getSymmetries(self, board, pi):

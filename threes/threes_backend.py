@@ -5,12 +5,12 @@ import numpy as np
 __author__ = 'Robert Xiao <nneonneo@gmail.com>'
 
 def to_val(x):
-    if isinstance(x[0], int):
+    if isinstance(x[0], np.int64):
         return np.array([x[0] if x[0] < 3 else 3*2**(x[0]-3)])
     return np.array([[i if i < 3 else 3*2**(i-3) for i in l] for l in x])
 
 def to_score(x):
-    if isinstance(x[0], int):
+    if isinstance(x[0], np.int64):
         return np.array([x[0] if x[0] < 3 else 3**(x[0]-2)])
     return np.array([[i if i < 3 else 3**(i-2) for i in l] for l in x])
 
