@@ -90,7 +90,7 @@ class ThreesGame(Game):
         """
         if len(self.valid_moves) > 0:
             return 0
-        return np.sum(to_score(self.board))
+        return to_score(self.board).sum()
 
     def getCanonicalForm(self, board, player):
         """

@@ -19,7 +19,7 @@ class ThreesNNet(nn.Module):
 
         super(ThreesNNet, self).__init__()
 
-        self.fc1 = nn.Linear(17, 1024)
+        self.fc1 = nn.Linear(19, 1024)
         self.fc_bn1 = nn.BatchNorm1d(1024)
 
         self.fc2 = nn.Linear(1024, 512)

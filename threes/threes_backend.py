@@ -85,15 +85,15 @@ def play_game():
         maxval = m.max()
         if maxval >= 7 and random.random() < 1/24.:
             if maxval <= 9:
-                tileset = range(4, maxval-2)
+                tileset = [4, 5, 6]
             else:
                 top = random.choice(range(6, maxval-2))
-                tileset = range(top-2, top+1)
+                tileset = [top-2, top - 1, top]
         else:
             if not deck:
                 deck = make_deck()
-            tileset = [deck.pop()]
-
+            val = deck.pop()
+            tileset = [val, val, val]
         move = yield m, tileset, valid
 
         if not valid:

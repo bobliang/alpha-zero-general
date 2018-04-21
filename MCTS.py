@@ -42,9 +42,8 @@ class MCTS():
 
         counts = [x**(1./temp) for x in counts]
         if sum(counts) == 0:
-            print ("f")
-            print ("actions", actions)
             numActions = actions.count(1)
+            print ("performing a random action for", numActions, "actions")
             return [1/numActions if a == 1 else 0 for a in actions]
         probs = [x/float(sum(counts)) for x in counts]
         return probs
