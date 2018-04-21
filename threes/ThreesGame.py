@@ -57,10 +57,11 @@ class ThreesGame(Game):
             nextBoard: board after applying action
             nextPlayer: player who plays in the next turn (should be -player)
         """
+        print("action", action)
         self.board, self.next_tile, self.valid_moves = self.game.send(action)
         return self.board, player
 
-    def getValidMoves(self, board, player):
+    def getValidMoves(self, board = None, player = None):
         """
         Input:
             board: current board
@@ -71,6 +72,7 @@ class ThreesGame(Game):
                         moves that are valid from the current board and player,
                         0 for invalid moves
         """
+        print ("self.valid_moves", self.valid_moves)
         moves = [1 if i in self.valid_moves else 0 for i in range(4)]
         print("moves", moves)
         return moves

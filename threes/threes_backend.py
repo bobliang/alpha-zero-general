@@ -99,7 +99,10 @@ def play_game():
         if not valid:
             break
 
+        print("move", move)
         changelines = do_move(m, move)
+        print ("changelines", changelines)
+        print ("tileset", tileset)
         random.choice(changelines)[-1] = random.choice(tileset)
 
 def play_game_interactive():
