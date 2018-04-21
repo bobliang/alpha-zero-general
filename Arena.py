@@ -6,7 +6,7 @@ class Arena():
     """
     An Arena class where any 2 agents can be pit against each other.
     """
-    def __init__(self, player1, player2, game, display=None):
+    def __init__(self, player1, game, display=None):
         """
         Input:
             player 1,2: two functions that takes board as input, return action
@@ -19,7 +19,7 @@ class Arena():
         human players/other baselines with each other.
         """
         self.player1 = player1
-        self.player2 = player2
+        self.player2 = None
         self.game = game
         self.display = display
 
