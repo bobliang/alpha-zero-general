@@ -77,7 +77,7 @@ class ThreesGame(Game):
         print("moves", moves)
         return moves
 
-    def getGameEnded(self, board, player):
+    def getGameEnded(self, board, player, invalid=False):
         """
         Input:
             board: current board
@@ -88,6 +88,8 @@ class ThreesGame(Game):
                small non-zero value for draw.
                
         """
+        if invalid:
+            return -1
         if len(self.valid_moves) > 0:
             return 0
         return to_score(self.board).sum()
@@ -107,7 +109,8 @@ class ThreesGame(Game):
                             the colors and return the board.
         """
         print(self.board, [self.next_tile])
-        return np.append(self.board.flatten(), [self.next_tile])
+        return np.append(np.append(self.board.flatten(), [self.next_tile]), 
+                                   [1 if i in self.valid_moves else 0 for i in range(4)])
 
     def getSymmetries(self, board, pi):
         """

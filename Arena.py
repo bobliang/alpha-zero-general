@@ -48,8 +48,9 @@ class Arena():
             valids = self.game.getValidMoves(self.game.getCanonicalForm(board, curPlayer),1)
 
             if valids[action]==0:
-                print(action)
-                assert valids[action] >0
+                return self.game.getGameEnded(board, 1, invalid=True)
+                #print(action)
+                #assert valids[action] >0
             board, curPlayer = self.game.getNextState(board, curPlayer, action)
         if verbose:
             assert(self.display)
@@ -74,17 +75,15 @@ class Arena():
         maxeps = int(num)
 
         num = int(num/2)
-        oneWon = 0
-        twoWon = 0
-        draws = 0
+        score = 0
         for _ in range(num):
             gameResult = self.playGame(verbose=verbose)
-            if gameResult==1:
-                oneWon+=1
+            if gameResult>0:
+                score+=gameResult
             elif gameResult==-1:
-                twoWon+=1
+                score -= 100000
             else:
-                draws+=1
+                input ("!!!!!!!!!!!!!!!!!!!!")
             # bookkeeping + plot progress
             eps += 1
             eps_time.update(time.time() - end)
@@ -96,4 +95,4 @@ class Arena():
             
         bar.finish()
 
-        return oneWon, twoWon, draws
+        return score
