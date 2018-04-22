@@ -109,6 +109,9 @@ class ThreesGame(Game):
                             the colors and return the board.
         """
         #print(self.board, [self.next_tile])
+        print ("self.board", self.board)
+        print ("self.next_tile", self.next_tile)
+        print ("self.valid_moves", self.valid_moves)
         return np.append(np.append(self.board.flatten(), [self.next_tile]), 
                                    [1 if i in self.valid_moves else 0 for i in range(4)])
 
