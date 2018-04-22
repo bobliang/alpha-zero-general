@@ -43,7 +43,7 @@ class MCTS():
         counts = [x**(1./temp) for x in counts]
         if sum(counts) == 0:
             numActions = actions.count(1)
-            print ("performing a random action for", numActions, "actions")
+            #print ("performing a random action for", numActions, "actions")
             return [1/numActions if a == 1 else 0 for a in actions]
         probs = [x/float(sum(counts)) for x in counts]
         return probs
@@ -79,7 +79,7 @@ class MCTS():
 
         if s not in self.Ps:
             # leaf node
-            print(canonicalBoard)
+            #print(canonicalBoard)
             self.Ps[s], v = self.nnet.predict(canonicalBoard)
             valids = self.game.getValidMoves(canonicalBoard, 1)
             self.Ps[s] = self.Ps[s]*valids      # masking invalid moves

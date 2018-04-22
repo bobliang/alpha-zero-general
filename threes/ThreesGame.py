@@ -57,7 +57,7 @@ class ThreesGame(Game):
             nextBoard: board after applying action
             nextPlayer: player who plays in the next turn (should be -player)
         """
-        print("action", action)
+        #print("action", action)
         self.board, self.next_tile, self.valid_moves = self.game.send(action)
         return self.board, player
 
@@ -72,9 +72,9 @@ class ThreesGame(Game):
                         moves that are valid from the current board and player,
                         0 for invalid moves
         """
-        print ("self.valid_moves", self.valid_moves)
+        #print ("self.valid_moves", self.valid_moves)
         moves = [1 if i in self.valid_moves else 0 for i in range(4)]
-        print("moves", moves)
+        #print("moves", moves)
         return moves
 
     def getGameEnded(self, board, player, invalid=False):
@@ -108,7 +108,7 @@ class ThreesGame(Game):
                             board as is. When the player is black, we can invert
                             the colors and return the board.
         """
-        print(self.board, [self.next_tile])
+        #print(self.board, [self.next_tile])
         return np.append(np.append(self.board.flatten(), [self.next_tile]), 
                                    [1 if i in self.valid_moves else 0 for i in range(4)])
 

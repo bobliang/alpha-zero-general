@@ -55,11 +55,11 @@ class Coach():
 
             action = np.random.choice(len(pi), p=pi)
             board, self.curPlayer = self.game.getNextState(board, self.curPlayer, action)
-            print ("before ")
+            #print ("before ")
             r = self.game.getGameEnded(board, self.curPlayer)
-            print ("r ", r)
+            #print ("r ", r)
             if r!=0:
-                print ("game ended!!!!!!!")
+                #print ("game ended!!!!!!!")
                 return [(x[0],x[2],r*((-1)**(x[1]!=self.curPlayer))) for x in trainExamples]
 
     def learn(self):
